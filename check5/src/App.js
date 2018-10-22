@@ -12,7 +12,7 @@ class App extends Component {
         commits: []
      } 
   }
-  componentWillMount(){
+  componentDidMount(){
     console.log('This is from component will  mount 1');
     this.fetchData();
     console.log('This is from component will  mount 2');
@@ -20,9 +20,9 @@ class App extends Component {
     console.log('This is from component will mount 3');
     
   }
-  fetchData(){
+  fetchData = async()=>{
     console.log('This is repo checking');
-    fetch('https://api.github.com/user/repos?access_token=405e9de7b11c68f0a4e8d2c347b9e3ab2cae7cd1').
+     fetch('https://api.github.com/user/repos?access_token=405e9de7b11c68f0a4e8d2c347b9e3ab2cae7cd1').
     then(results => results.json()).
     then(results => results.map(user =>({
       name :user.name,
@@ -37,7 +37,7 @@ class App extends Component {
     console.log(this.state);
    
   }
-  fetchnumberOfCommits(){
+  fetchnumberOfCommits= async()=>{
     
     let {check,repositories}=this.state
     console.log(this.state);
